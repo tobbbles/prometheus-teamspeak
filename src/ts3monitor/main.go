@@ -25,7 +25,7 @@ func init() {
 
 func main() {
 	// starts the ping loop
-	ping()
+	go ping()
 	// attaches the prometheus handler to the /metrics path
 	http.Handle("/metrics", prometheus.Handler())
 	// serves the application
