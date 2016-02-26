@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"net"
 	"net/http"
 	"time"
@@ -41,6 +42,7 @@ func ping() {
 		conn, err := net.DialTimeout("tcp", *address, 200*time.Millisecond)
 		if err != nil {
 			// the connection timedout, therefor the server is down
+			fmt.Println(err)
 			ts3Status.Set(0)
 			continue
 		}
@@ -50,6 +52,7 @@ func ping() {
 		b, _ := conn.Read(data)
 		//checks the bytesread and the length of the read data for a response
 		if b != 0 && len(data) != 0 {
+			fmt.Println("setting status to 1")
 			// the connection returned a string, therefore the server is online
 			ts3Status.Set(1)
 		}
