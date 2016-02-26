@@ -11,12 +11,11 @@ import (
 )
 
 var (
+	address   = flag.String("address", "localhost:10011", `-address="localhost:10011"`)
 	ts3Status = prometheus.NewGauge(prometheus.GaugeOpts{
 		Name: "teamspeak_up",
 		Help: "Current status of the TeamSpeak3.",
 	})
-
-	address = flag.String("addr", "localhost:10011", `-addr="localhost:10011"`)
 )
 
 func init() {
@@ -25,6 +24,9 @@ func init() {
 }
 
 func main() {
+	flag.Parse()
+	//
+	fmt.Println("Starting listener on: ", *address)
 	// starts the ping loop
 	go ping()
 	// attaches the prometheus handler to the /metrics path
