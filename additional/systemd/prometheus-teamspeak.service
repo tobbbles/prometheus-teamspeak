@@ -1,0 +1,14 @@
+[Unit]
+Description=Prometheus-backed TeamSpeak3 monitor
+Documentation=https://github.com/mnzt/prometheus-teamspeak
+
+[Service]
+User=prometheus
+Type=notify
+ExecStart=/usr/bin/promehtues-teamspeak
+Restart=always
+RestartSec=10s
+LimitNOFILE=40000
+
+[Install]
+WantedBy=multi-user.target

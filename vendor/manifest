@@ -25,7 +25,7 @@
 		{
 			"importpath": "github.com/prometheus/client_golang/prometheus",
 			"repository": "https://github.com/prometheus/client_golang",
-			"revision": "18acf9993a863f4c4b40612e19cdd243e7c86831",
+			"revision": "b672480095af16ad0b7203512938d3a050aa884b",
 			"branch": "master",
 			"path": "/prometheus"
 		},
