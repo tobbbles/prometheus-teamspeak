@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/prometheus/client_golang/prometheus"
@@ -33,6 +34,10 @@ func main() {
 		os.Exit(-1)
 	}
 
+	if !strings.Contains(address, ":") {
+		address = fmt.Sprintf("%s:10011", address)
+	}
+
 	if port == "" {
 		port = "8000"
 	}
@@ -53,7 +58,7 @@ func main() {
 
 func ping() {
 	for {
-		conn, err := net.DialTimeout("tcp", address, 200*time.Millisecond)
+		conn, err := net.DialTimeout("tcp", address, 500*time.Millisecond)
 		if err != nil {
 			// Most likely the connection timed out.
 			ts3Status.Set(0)

@@ -33,7 +33,7 @@ Visiting [http://localhost:8010/metrics](http://127.0.0.1:8010/metrics) in your 
 2. Run the container, ensuring to specify the environment variables. _NOTE:_ If you are running a TeamSpeak3 server and prometheus-teamspeak on the same host, be sure to set `--net=host`.
 ```
 docker run -d \
-            -e ADDR=ts.awesome.server \
+            -e ADDR=ts.awesome.server:10011 \
             -e INTERVAL=5 \
             -p 1337:8010 \
             prometheus-teamspeak
